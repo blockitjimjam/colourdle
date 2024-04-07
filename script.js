@@ -11,6 +11,7 @@ const backspacebutton = document.getElementById("backspace");
 const submitbutton = document.getElementById("check");
 const winoverlay = document.getElementById("winoverlay");
 let greentimes;
+let ambertimes;
 let guessnumber = 1;
 let guessindex = 1;
 let colourAnswer = [];
@@ -101,8 +102,9 @@ document.getElementById(`${guessnumber}${guessindex}`).style.backgroundColor = "
       if (guessc == colours[i-1]){
         document.getElementById(`${guessnumber}${i}`).style.borderColor = "lime";
         greentimes++;
-      } else if (colours.includes(document.getElementById(`${guessnumber}${i}`).style.backgroundColor)){
+      } else if (colours.includes(guessc)){
         document.getElementById(`${guessnumber}${i}`).style.borderColor = "#ff6624";
+        ambertimes++;
       
       } else {
         document.getElementById(`${guessnumber}${i}`).style.borderColor = "gray";
@@ -110,6 +112,13 @@ document.getElementById(`${guessnumber}${guessindex}`).style.backgroundColor = "
     }
     if (greentimes == 4){
       winoverlay.style.display = "block";
+    }
+    if (greentimes == 3 && ambertimes == 1){
+      for (let i = 1; i < 5; i++){
+        if (document.getElementById(`${guessnumber}${i}`).style.borderColor == "#ff6624"){
+          document.getElementById(`${guessnumber}${i}`).style.borderColor = "gray";
+        }
+      }
     }
     guessnumber++;
     guessindex = 1;
