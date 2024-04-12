@@ -10,16 +10,9 @@
 </head>
 
 <body>
-  <nav>
-    <div class="logo">
-      <h1>Colourdle</h1>
-    </div>
-    <ul class="nav-links">
-      <li><i class="fa-solid fa-bars"></i></li>
-    </ul>
-  </nav>
 
   <div class="centered">
+  <h3 id="winselement">Wins: 0</h3>
   <h1>Colourdle</h1>
   <button id="start">Start Game</button>
   </div>
@@ -78,7 +71,14 @@
     <button id="backspace"><i class="fa-solid fa-delete-left"></i></button>
     <button id="check"><i class="fa-solid fa-check"></i></button>
   </div>
-  <div id="winoverlay"><img src="https://www.icegif.com/wp-content/uploads/icegif-3602.gif"></div>
+  <div id="winoverlay">
+    <div class="popup-content">
+      <span class="close-btn" onclick="closePopup()">&times;</span>
+      <h1>You won!</h1>
+      <p>Congrats!</p>
+      <button onclick="startGame()">Start Game</button>
+    </div>
+  </div>
   <script src="script.js"></script>
 </body>
 
