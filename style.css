@@ -1,7 +1,7 @@
 html, body {
   height: 100%;
   width: 100%;
-  overflow-x: hidden;
+  overflow-x: scroll;
   margin: 0;
   padding: 0;
   background: linear-gradient(to top right, #000000, #002b33);
