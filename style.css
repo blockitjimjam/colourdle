@@ -4,6 +4,7 @@ html, body {
   overflow-x: scroll;
   margin: 0;
   padding: 0;
+  padding-bottom: env(safe-area-inset-bottom);
   background: linear-gradient(to top right, #000000, #002b33);
   font-family: Arial, Helvetica, sans-serif;
   display: flexbox;
