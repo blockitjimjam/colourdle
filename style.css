@@ -6,13 +6,27 @@ html, body {
   padding: 0;
   background: linear-gradient(to top right, #000000, #002b33);
   font-family: Arial, Helvetica, sans-serif;
+  display: flexbox;
+  justify-content: center;
   align-items: center;
   color: #fff;
 }
+
 h1 {
   color: #fff;
   font-size: 70px;
-  
+}
+.easy {
+  background-color: lime;
+}
+.medium {
+  background-color: #ffe224;
+}
+.hard {
+  background-color: #ff0000;
+}
+.storehelp {
+  background-color: #005a8f;
 }
 .centered {
   align-items: center;
@@ -22,9 +36,34 @@ h1 {
   margin-left: auto;
   margin-right: auto;
 }
+.guessdisplaym {
+  margin-left: auto;
+  margin-right: auto;
+}
+.guessdisplayh {
+  margin-left: auto;
+  margin-right: auto;
+}
 .guessdisplayb {
   margin-left: auto;
   margin-right: auto;
+}
+h3 img {
+  vertical-align: middle;
+  margin-right: 10px;    
+  width: 25px;           
+  height: auto; 
+}
+h3 {
+  display: inline-block;
+  margin-left: 10px;
+  vertical-align: middle; 
+}
+#chipscount {
+  color: #ad7600;
+}
+.inline {
+  display: inline;
 }
 button {
   background-color: #db8d1a;
@@ -32,6 +71,7 @@ button {
   border-radius: 5px;
   padding: 20px;
   font-size: 20px;
+  margin-bottom: 10px;
   margin-right: 10px;
 }
 #backspace {
@@ -86,7 +126,7 @@ nav {
   color: #fff;
 }
 
-#winoverlay {
+.popupover {
   display: none; 
   position: fixed;
   top: 0;
@@ -96,17 +136,21 @@ nav {
   background-color: rgba(0, 0, 0, 0.5); 
   z-index: 9999; 
 }
-
+.popup-content::-webkit-scrollbar {
+  display: none;
+}
 
 .popup-content {
   position: absolute;
   top: 50%;
   left: 50%;
+  max-height: 70%;
+  overflow-y: scroll;
   transform: translate(-50%, -50%);
   background-color: black;
   color: white;
   padding: 20px;
-  border-radius: 5px;
+  border-radius: 2vi;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 

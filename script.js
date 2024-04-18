@@ -1,25 +1,54 @@
 const startButton = document.getElementById("start");
+const startButtonM = document.getElementById("start1");
+const startButtonH = document.getElementById("start2");
 const guessVisual = document.querySelector(".guessdisplay");
+const nextGame = document.getElementById("nextgame");
+const nextGame2 = document.getElementById("nextgame2");
+const guessVisualm = document.querySelector(".guessdisplaym");
+const guessVisualh = document.querySelector(".guessdisplayh");
 const guessVisualb = document.querySelector(".guessdisplayb");
-const redbutton = document.getElementById("red");
-const greenbutton = document.getElementById("green");
-const bluebutton = document.getElementById("blue");
-const yellowbutton = document.getElementById("yellow");
-const purplebutton = document.getElementById("purple");
-const orangebutton = document.getElementById("orange");
-const backspacebutton = document.getElementById("backspace");
+let redbutton = document.getElementById("red");
+let greenbutton = document.getElementById("green");
+let bluebutton = document.getElementById("blue");
+let yellowbutton = document.getElementById("yellow");
+let purplebutton = document.getElementById("purple");
+let orangebutton = document.getElementById("orange");
+let backspacebutton = document.getElementById("backspace");
+const exitb = document.getElementById("exitgame");
 const submitbutton = document.getElementById("check");
 const winoverlay = document.getElementById("winoverlay");
+const lossoverlay = document.getElementById("lossoverlay");
 const winselement = document.getElementById("winselement");
+const helpbutton = document.getElementById("helpbutton");
+const storebutton = document.getElementById("storebutton");
+const chipscount = document.getElementById("chipscount");
+const helpoverlay = document.getElementById("helpoverlay");
 let wins;
+let chips;
+let goes;
+let won;
+function removeAllEventListeners(element) {
+    const clone = element.cloneNode(true);
+    element.replaceWith(clone);
+    return clone;
+}
+function formatint(number) {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 if (localStorage.getItem("wins") != null) {
   wins = parseInt(localStorage.getItem("wins"));
-  
 } else {
   wins = 0;
 }
+if (localStorage.getItem("chips") != null) {
+  chips = parseInt(localStorage.getItem("chips"));
+} else {
+  chips = 0;
+}
 winselement.innerHTML = "Wins: " + wins;
+chipscount.innerHTML = "<img src='assets/chip.png'>" + chips;
 let a;
+let m;
 let greentimes = 0;
 let ambertimes = 0;
 let guessnumber = 1;
@@ -35,128 +64,389 @@ const colourDefs = new Map([
 ]);
 let colours = [];
 let guess = [];
+helpbutton.addEventListener("click", function() {
+  helpoverlay.style.display = "block";
+});
 guessVisual.style.display = "none";
+guessVisualm.style.display = "none";
 guessVisualb.style.display = "none";
+guessVisualh.style.display = "none";
+exitb.style.display = "none";
 winoverlay.style.display = "none";
-function resetTable() {
-  for (let i = 1; i <= 4; i++) {
-    for (let j = 1; j <= 4; j++) {
-      const cell = document.getElementById(`${i}${j}`);
+lossoverlay.style.display = "none";
+helpoverlay.style.display = "none";
+exitb.addEventListener("click", function () {
+  guessVisual.style.display = "none";
+  guessVisualm.style.display = "none";
+  guessVisualb.style.display = "none";
+  guessVisualh.style.display = "none";
+  exitb.style.display = "none";
+  winoverlay.style.display = "none";
+  lossoverlay.style.display = "none";
+  helpoverlay.style.display = "none";
+  storebutton.style.display = "inline-block";
+  startButton.style.display = "inline-block";
+  startButtonM.style.display = "inline-block";
+  startButtonH.style.display = "inline-block";
+})
+// eventListener functions
+function redButtonClickHandler() {
+  if (guessindex < 5) {
+    document.getElementById(`${guessnumber}${guessindex}e`).style.backgroundColor = "#cc3333";
+    guessindex++;
+  }
+}
+
+function greenButtonClickHandler() {
+  if (guessindex < 5) {
+    document.getElementById(`${guessnumber}${guessindex}e`).style.backgroundColor = "green";
+    guessindex++;
+  }
+}
+
+function blueButtonClickHandler() {
+  if (guessindex < 5) {
+    document.getElementById(`${guessnumber}${guessindex}e`).style.backgroundColor = "blue";
+    guessindex++;
+  }
+}
+
+function yellowButtonClickHandler() {
+  if (guessindex < 5) {
+    document.getElementById(`${guessnumber}${guessindex}e`).style.backgroundColor = "yellow";
+    guessindex++;
+  }
+}
+
+function purpleButtonClickHandler() {
+  if (guessindex < 5) {
+    document.getElementById(`${guessnumber}${guessindex}e`).style.backgroundColor = "purple";
+    guessindex++;
+  }
+}
+
+function orangeButtonClickHandler() {
+  if (guessindex < 5) {
+    document.getElementById(`${guessnumber}${guessindex}e`).style.backgroundColor = "orange";
+    guessindex++;
+  }
+}
+
+function backspaceButtonClickHandler() {
+  if (guessindex > 1) {
+    guessindex--;
+  } else {
+    guessindex = 1;
+  }
+
+  document.getElementById(`${guessnumber}${guessindex}e`).style.backgroundColor = "transparent";
+}
+function redButtonClickHandlerm() {
+  if (guessindex < 6) {
+    document.getElementById(`${guessnumber}${guessindex}m`).style.backgroundColor = "#cc3333";
+    guessindex++;
+  }
+}
+
+function greenButtonClickHandlerm() {
+  if (guessindex < 6) {
+    document.getElementById(`${guessnumber}${guessindex}m`).style.backgroundColor = "green";
+    guessindex++;
+  }
+}
+
+function blueButtonClickHandlerm() {
+  if (guessindex < 6) {
+    document.getElementById(`${guessnumber}${guessindex}m`).style.backgroundColor = "blue";
+    guessindex++;
+  }
+}
+
+function yellowButtonClickHandlerm() {
+  if (guessindex < 6) {
+    document.getElementById(`${guessnumber}${guessindex}m`).style.backgroundColor = "yellow";
+    guessindex++;
+  }
+}
+
+function purpleButtonClickHandlerm() {
+  if (guessindex < 6) {
+    document.getElementById(`${guessnumber}${guessindex}m`).style.backgroundColor = "purple";
+    guessindex++;
+  }
+}
+
+function orangeButtonClickHandlerm() {
+  if (guessindex < 6) {
+    document.getElementById(`${guessnumber}${guessindex}m`).style.backgroundColor = "orange";
+    guessindex++;
+  }
+}
+
+function backspaceButtonClickHandlerm() {
+  if (guessindex > 1) {
+    guessindex--;
+  } else {
+    guessindex = 1;
+  }
+
+  document.getElementById(`${guessnumber}${guessindex}m`).style.backgroundColor = "transparent";
+}
+function redButtonClickHandlerh() {
+  if (guessindex < 7) {
+    document.getElementById(`${guessnumber}${guessindex}h`).style.backgroundColor = "#cc3333";
+    guessindex++;
+  }
+}
+
+function greenButtonClickHandlerh() {
+  if (guessindex < 7) {
+    document.getElementById(`${guessnumber}${guessindex}h`).style.backgroundColor = "green";
+    guessindex++;
+  }
+}
+
+function blueButtonClickHandlerh() {
+  if (guessindex < 7) {
+    document.getElementById(`${guessnumber}${guessindex}h`).style.backgroundColor = "blue";
+    guessindex++;
+  }
+}
+
+function yellowButtonClickHandlerh() {
+  if (guessindex < 7) {
+    document.getElementById(`${guessnumber}${guessindex}h`).style.backgroundColor = "yellow";
+    guessindex++;
+  }
+}
+
+function purpleButtonClickHandlerh() {
+  if (guessindex < 7) {
+    document.getElementById(`${guessnumber}${guessindex}h`).style.backgroundColor = "purple";
+    guessindex++;
+  }
+}
+
+function orangeButtonClickHandlerh() {
+  if (guessindex < 7) {
+    document.getElementById(`${guessnumber}${guessindex}h`).style.backgroundColor = "orange";
+    guessindex++;
+  }
+}
+
+function backspaceButtonClickHandlerh() {
+  if (guessindex > 1) {
+    guessindex--;
+  } else {
+    guessindex = 1;
+  }
+
+  document.getElementById(`${guessnumber}${guessindex}h`).style.backgroundColor = "transparent";
+}
+
+
+function resetTable(index, mode) {
+  if (mode == "h") {
+    goes = 4;
+  } else {
+    goes = 5;
+  }
+  for (let i = 1; i <= goes; i++) {
+    for (let j = 1; j <= index; j++) {
+      const cell = document.getElementById(`${i}${j}${mode}`);
       cell.style.backgroundColor = "transparent";
       cell.style.borderColor = "white";
     }
   }
 }
+nextGame.addEventListener("click", function () {
+  if (m == "E"){
+    startGameEz("e", 4);
+  } else if (m == "M") {
+    startGameEz("m", 5);
+  } else {
+    startGameEz("h", 6);
+  }
+})
+nextGame2.addEventListener("click", function () {
+  if (m == "E"){
+    startGameEz("e", 4);
+  } else if (m == "M") {
+    startGameEz("m", 5);
+  } else {
+    startGameEz("h", 6);
+  }
+})
 function closePopup() {
   document.getElementById("winoverlay").style.display = "none";
+  document.getElementById("lossoverlay").style.display = "none";
+  helpoverlay.style.display = "none";
 }
 
-function startGame() {
-  document.getElementById("winoverlay").style.display = "none";
-  for (let i = 0; i < 4; i++) {
+function startGameEz(mod, num1) {
+  won = 0;
+  closePopup();
+  for (let i = 0; i < num1; i++) {
     a = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
     colourAnswer[i] = a;
 
   }
 
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < num1; i++) {
     colours[i] = colourDefs.get(colourAnswer[i]);
   }
   guessnumber = 1;
   guessindex = 1;
+  exitb.style.display = "inline-block";
+  storebutton.style.display = "none";
   startButton.style.display = "none";
-  guessVisual.style.display = "table";
+  startButtonM.style.display = "none";
+  startButtonH.style.display = "none";
+  if (mod == "e"){
+    guessVisual.style.display = "table";
+  } else if (mod == "m") {
+    guessVisualm.style.display = "table";
+  } else {
+    guessVisualh.style.display = "table";
+  }
   guessVisualb.style.display = "table";
-  resetTable();
+  resetTable(num1, mod);
   
 
   submitbutton.addEventListener("click", function() {
     greentimes = 0;
     ambertimes = 0;
-    if (guessindex == 5) {
+    if (guessindex == num1 + 1) {
       let guessc;
-      for (let i = 1; i < 5; i++) {
-        if (document.getElementById(`${guessnumber}${i}`).style.backgroundColor == "rgb(204, 51, 51)") {
+      for (let i = 1; i < num1 + 1; i++) {
+        if (document.getElementById(`${guessnumber}${i}${mod}`).style.backgroundColor == "rgb(204, 51, 51)") {
           guessc = "red";
         } else {
-          guessc = document.getElementById(`${guessnumber}${i}`).style.backgroundColor;
+          guessc = document.getElementById(`${guessnumber}${i}${mod}`).style.backgroundColor;
         }
         if (guessc == colours[i - 1]) {
-          document.getElementById(`${guessnumber}${i}`).style.borderColor = "lime";
+          document.getElementById(`${guessnumber}${i}${mod}`).style.borderColor = "lime";
           greentimes++;
         } else if (colours.includes(guessc)) {
-          document.getElementById(`${guessnumber}${i}`).style.borderColor = "#ff6624";
+          document.getElementById(`${guessnumber}${i}${mod}`).style.borderColor = "#ff6624";
           ambertimes++;
 
         } else {
-          document.getElementById(`${guessnumber}${i}`).style.borderColor = "gray";
+          document.getElementById(`${guessnumber}${i}${mod}`).style.borderColor = "gray";
         }
       }
-      if (greentimes == 4) {
-        wins++;
+      if (greentimes == num1) {
+        if (mod == "e") {
+          wins++;
+          chips += 5;
+        } else if (mod == "m") {
+          wins++;
+          chips += 10;
+         } else if (mod == "h") {
+          wins += 2;
+          chips += 20;
+        } else {
+          chips -= 1;
+        }
+        won = 1;
         localStorage.setItem("wins", wins);
+        localStorage.setItem("chips", chips);
+        chipscount.innerHTML = "<img src='assets/chip.png'>" + chips;
         winselement.innerHTML = "Wins: " + wins;
         winoverlay.style.display = "block";
       }
-      if (greentimes == 3 && ambertimes == 1) {
-        for (let i = 1; i < 5; i++) {
-          if (document.getElementById(`${guessnumber}${i}`).style.borderColor == "rgb(255, 102, 36)") {
-            document.getElementById(`${guessnumber}${i}`).style.borderColor = "gray";
+      if (greentimes == num1 - 1 && ambertimes == 1) {
+        for (let i = 1; i < num1 + 1; i++) {
+          if (document.getElementById(`${guessnumber}${i}${mod}`).style.borderColor == "rgb(255, 102, 36)") {
+            document.getElementById(`${guessnumber}${i}${mod}`).style.borderColor = "gray";
           }
         }
       }
       guessnumber++;
       guessindex = 1;
+      if (guessnumber > goes) {
+        if (won == 0) {
+          if (mod == "e") {
+            chips -= 1;
+          } else if (mod == "m") {
+            chips -= 2;
+          } else if (mod == "h") {
+            chips -= 5;
+          }
+          lossoverlay.style.display = "block";
+          chipscount.innerHTML = "<img src='assets/chip.png'>" + chips;
+          winselement.innerHTML = "Wins: " + wins;
+          localStorage.setItem("wins", wins);
+          localStorage.setItem("chips", chips);
+        }
+      }
+
     }
   })
 }
 startButton.addEventListener("click", function() {
-  redbutton.addEventListener("click", function() {
-    if (guessindex < 5) {
-      document.getElementById(`${guessnumber}${guessindex}`).style.backgroundColor = "#cc3333";
-      guessindex++;
-    }
-  })
-  greenbutton.addEventListener("click", function() {
-    if (guessindex < 5) {
-      document.getElementById(`${guessnumber}${guessindex}`).style.backgroundColor = "green";
-      guessindex++;
-    }
-  })
-  bluebutton.addEventListener("click", function() {
-    if (guessindex < 5) {
-      document.getElementById(`${guessnumber}${guessindex}`).style.backgroundColor = "blue";
-      guessindex++;
-    }
-  })
-  yellowbutton.addEventListener("click", function() {
-    if (guessindex < 5) {
-      document.getElementById(`${guessnumber}${guessindex}`).style.backgroundColor = "yellow";
-      guessindex++;
-    }
-  })
-  purplebutton.addEventListener("click", function() {
-    if (guessindex < 5) {
-      document.getElementById(`${guessnumber}${guessindex}`).style.backgroundColor = "purple";
-      guessindex++;
-    }
-  })
-  orangebutton.addEventListener("click", function() {
-    if (guessindex < 5) {
-
-      document.getElementById(`${guessnumber}${guessindex}`).style.backgroundColor = "orange";
-      guessindex++;
-    }
-  })
-  backspacebutton.addEventListener("click", function() {
-    if (guessindex > 1) {
-      guessindex--;
-    } else {
-      guessindex = 1;
-    }
-
-    document.getElementById(`${guessnumber}${guessindex}`).style.backgroundColor = "transparent";
-  })
-  startGame();
+  redbutton = removeAllEventListeners(redbutton);
+  greenbutton = removeAllEventListeners(greenbutton);
+  bluebutton = removeAllEventListeners(bluebutton);
+  yellowbutton = removeAllEventListeners(yellowbutton);
+  purplebutton = removeAllEventListeners(purplebutton);
+  orangebutton = removeAllEventListeners(orangebutton);
+  backspacebutton = removeAllEventListeners(backspacebutton);
   
+
+  m = "E"
+  nextGame.onclick = m;
+  redbutton.addEventListener("click", redButtonClickHandler);
+  greenbutton.addEventListener("click", greenButtonClickHandler);
+  bluebutton.addEventListener("click", blueButtonClickHandler);
+  yellowbutton.addEventListener("click", yellowButtonClickHandler);
+  purplebutton.addEventListener("click", purpleButtonClickHandler);
+  orangebutton.addEventListener("click", orangeButtonClickHandler);
+  backspacebutton.addEventListener("click", backspaceButtonClickHandler);
+  startGameEz("e", 4);
+  
+})
+
+startButtonM.addEventListener("click", function() {
+  redbutton = removeAllEventListeners(redbutton);
+  greenbutton = removeAllEventListeners(greenbutton);
+  bluebutton = removeAllEventListeners(bluebutton);
+  yellowbutton = removeAllEventListeners(yellowbutton);
+  purplebutton = removeAllEventListeners(purplebutton);
+  orangebutton = removeAllEventListeners(orangebutton);
+  backspacebutton = removeAllEventListeners(backspacebutton);
+
+
+  m = "M";
+  nextGame.onclick = m;
+  redbutton.addEventListener("click", redButtonClickHandlerm);
+  greenbutton.addEventListener("click", greenButtonClickHandlerm);
+  bluebutton.addEventListener("click", blueButtonClickHandlerm);
+  yellowbutton.addEventListener("click", yellowButtonClickHandlerm);
+  purplebutton.addEventListener("click", purpleButtonClickHandlerm);
+  orangebutton.addEventListener("click", orangeButtonClickHandlerm);
+  backspacebutton.addEventListener("click", backspaceButtonClickHandlerm);
+  startGameEz("m", 5);
+
+})
+startButtonH.addEventListener("click", function() {
+  redbutton = removeAllEventListeners(redbutton);
+  greenbutton = removeAllEventListeners(greenbutton);
+  bluebutton = removeAllEventListeners(bluebutton);
+  yellowbutton = removeAllEventListeners(yellowbutton);
+  purplebutton = removeAllEventListeners(purplebutton);
+  orangebutton = removeAllEventListeners(orangebutton);
+  backspacebutton = removeAllEventListeners(backspacebutton);
+
+  m = "H";
+  nextGame.onclick = m;
+  redbutton.addEventListener("click", redButtonClickHandlerh);
+  greenbutton.addEventListener("click", greenButtonClickHandlerh);
+  bluebutton.addEventListener("click", blueButtonClickHandlerh);
+  yellowbutton.addEventListener("click", yellowButtonClickHandlerh);
+  purplebutton.addEventListener("click", purpleButtonClickHandlerh);
+  orangebutton.addEventListener("click", orangeButtonClickHandlerh);
+  backspacebutton.addEventListener("click", backspaceButtonClickHandlerh);
+  startGameEz("h", 6);
+
 })

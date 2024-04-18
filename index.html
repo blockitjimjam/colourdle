@@ -12,55 +12,163 @@
 <body>
 
   <div class="centered">
+  <div class="inline">
   <h3 id="winselement">Wins: 0</h3>
+  <h3 id="chipscount"><img src="assets/chip.png"> 0</h3>
+  </div>
   <h1>Colourdle</h1>
-  <button id="start">Start Game</button>
+  <p>v0.2.0 - Updates every friday (latest update: 19th April 2024)</p>
+  <button id="start" class="easy">Easy Mode</button>
+    <br>
+    <button id="start1" class="medium">Medium Mode</button>
+    <br>
+    <button id="start2" class="hard">Hard Mode</button>
+    <br>
+    <button id="storebutton" class="storehelp">Store</button>
+    <button id="helpbutton" class="storehelp">Help</button>
+  <button id="exitgame">Exit Game</button>
   </div>
   <div class="guessdisplay">
+
   <table>
     
   <tr>
     <td>1st Guess</td>
-    <td id="11"> </td>
-    <td id="12"> </td>
-    <td id="13"> </td>
-    <td id="14"> </td>
+    <td id="11e"> </td>
+    <td id="12e"> </td>
+    <td id="13e"> </td>
+    <td id="14e"> </td>
   </tr>
     
   <tr>
     <td>2nd Guess</td>
-    <td id="21"> </td>
-    <td id="22"> </td>
-    <td id="23"> </td>
-    <td id="24"> </td>
+    <td id="21e"> </td>
+    <td id="22e"> </td>
+    <td id="23e"> </td>
+    <td id="24e"> </td>
   </tr>
     
     <tr>
       <td>3rd Guess</td>
-      <td id="31"> </td>
-      <td id="32"> </td>
-      <td id="33"> </td>
-      <td id="34"> </td>
+      <td id="31e"> </td>
+      <td id="32e"> </td>
+      <td id="33e"> </td>
+      <td id="34e"> </td>
     </tr>
   
     <tr>
       <td>4th Guess</td>
-      <td id="41"> </td>
-      <td id="42"> </td>
-      <td id="43"> </td>
-      <td id="44"> </td>
+      <td id="41e"> </td>
+      <td id="42e"> </td>
+      <td id="43e"> </td>
+      <td id="44e"> </td>
     </tr>
     
     <tr>
       <td>Last Guess</td>
-      <td id="51"> </td>
-      <td id="52"> </td>
-      <td id="53"> </td>
-      <td id="54"> </td>
+      <td id="51e"> </td>
+      <td id="52e"> </td>
+      <td id="53e"> </td>
+      <td id="54e"> </td>
     </tr>
     
   </table>
   </div>
+  <div class="guessdisplaym">
+    <table>
+
+    <tr>
+      <td>1st Guess</td>
+      <td id="11m"> </td>
+      <td id="12m"> </td>
+      <td id="13m"> </td>
+      <td id="14m"> </td>
+      <td id="15m"> </td>
+    </tr>
+
+    <tr>
+      <td>2nd Guess</td>
+      <td id="21m"> </td>
+      <td id="22m"> </td>
+      <td id="23m"> </td>
+      <td id="24m"> </td>
+      <td id="25m"> </td>
+    </tr>
+
+      <tr>
+        <td>3rd Guess</td>
+        <td id="31m"> </td>
+        <td id="32m"> </td>
+        <td id="33m"> </td>
+        <td id="34m"> </td>
+        <td id="35m"> </td>
+      </tr>
+
+      <tr>
+        <td>4th Guess</td>
+        <td id="41m"> </td>
+        <td id="42m"> </td>
+        <td id="43m"> </td>
+        <td id="44m"> </td>
+        <td id="45m"> </td>
+      </tr>
+
+      <tr>
+        <td>Last Guess</td>
+        <td id="51m"> </td>
+        <td id="52m"> </td>
+        <td id="53m"> </td>
+        <td id="54m"> </td>
+        <td id="55m"> </td>
+      </tr>
+
+    </table>
+    </div>
+  <div class="guessdisplayh">
+    <table>
+
+    <tr>
+      <td>1st Guess</td>
+      <td id="11h"> </td>
+      <td id="12h"> </td>
+      <td id="13h"> </td>
+      <td id="14h"> </td>
+      <td id="15h"> </td>
+      <td id="16h"> </td>
+    </tr>
+
+    <tr>
+      <td>2nd Guess</td>
+      <td id="21h"> </td>
+      <td id="22h"> </td>
+      <td id="23h"> </td>
+      <td id="24h"> </td>
+      <td id="25h"> </td>
+      <td id="26h"> </td>
+    </tr>
+
+      <tr>
+        <td>3rd Guess</td>
+        <td id="31h"> </td>
+        <td id="32h"> </td>
+        <td id="33h"> </td>
+        <td id="34h"> </td>
+        <td id="35h"> </td>
+        <td id="36h"> </td>
+      </tr>
+
+      <tr>
+        <td>Last Guess</td>
+        <td id="41h"> </td>
+        <td id="42h"> </td>
+        <td id="43h"> </td>
+        <td id="44h"> </td>
+        <td id="45h"> </td>
+        <td id="46h"> </td>
+      </tr>
+
+    </table>
+    </div>
   <div class="guessdisplayb">
     <button id="red">Red</button>
     <button id="green">Green</button>
@@ -71,14 +179,47 @@
     <button id="backspace"><i class="fa-solid fa-delete-left"></i></button>
     <button id="check"><i class="fa-solid fa-check"></i></button>
   </div>
-  <div id="winoverlay">
+  <div class="popupover" id="winoverlay">
     <div class="popup-content">
       <span class="close-btn" onclick="closePopup()">&times;</span>
       <h1>You won!</h1>
       <p>Congrats!</p>
-      <button onclick="startGame()">Start Game</button>
+      <button id="nextgame">Next Game</button>
     </div>
   </div>
+  <div class="popupover" id="lossoverlay">
+    <div class="popup-content">
+      <span class="close-btn" onclick="closePopup()">&times;</span>
+      <h1>You Lost!</h1>
+      <p>Unlucky D:</p>
+      <button id="nextgame2">Next Game</button>
+    </div>
+  </div>
+  <div class="popupover" id="helpoverlay">
+    <div class="popup-content">
+      <span class="close-btn" onclick="closePopup()">&times;</span>
+      <h1>How to play colourdle</h1>
+      <h3>Colourdle is similar to games like wordle in the respect that you have to guess a sequence of colours. When you start playing, you can input your guess using the buttons at the bottom. when you guess, the colours will have a new border. Grey means that the colour is not in the colour sequence at all, anywhere, however amber means that colour is in the sequence, but not in that particular place. Green means it is in the sequence AND in the right place. For example:</h3>
+      <table>
+      <tr>
+        <td id="" style="background-color: red; border-color: gray;"> </td>
+        <td id="" style="background-color: blue; border-color: lime;"> </td>
+        <td id="" style="background-color: yellow; border-color: #ff6624;"> </td>
+        <td id="" style="background-color: purple; border-color: gray;"> </td>
+      </tr>
+      </table>
+      <h3>In this guess little timmy has made here, red and purple are not in the sequence at all, however yellow is in the sequence and in the wrong place. Blue is in the sequence, and it is in the right place. If you guess the correct sequence, you win! On easy mode and medium mode, you have 5 guesses. On hard mode, you have 4 guesses.</h3>
+      <h1>Chips and wins</h1>
+      <h3><img src="assets/chip.png">Chips are the currency of the game. You can earn <img src="assets/chip.png">chips by winning games. You can spend chips on items in the store (coming soon in next weeks update!). However, if you loose, you can actually loose <img src="assets/chip.png">chips. Lets look at how much you gain and loose for each mode:<br><br>
+  Easy mode win: <img src="assets/chip.png">5<br>
+  Easy mode loss: -<img src="assets/chip.png">1<br>
+  Medium mode win: <img src="assets/chip.png">10<br>
+  Medium mode loss: -<img src="assets/chip.png">2<br>
+  Hard mode win: <img src="assets/chip.png">20<br>
+  Hard mode loss: -<img src="assets/chip.png">5<br>
+    </div>
+  </div>
+  
   <script src="script.js"></script>
 </body>
 
