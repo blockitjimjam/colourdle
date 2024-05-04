@@ -6,29 +6,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Colourdle</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
-   <script src="https://kit.fontawesome.com/29bb004d97.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/29bb004d97.js" crossorigin="anonymous"></script>
   <script>
-      (function(h,o,t,j,a,r){
-          h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-          h._hjSettings={hjid:4949492,hjsv:6};
-          a=o.getElementsByTagName('head')[0];
-          r=o.createElement('script');r.async=1;
-          r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-          a.appendChild(r);
-      })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    (function (h, o, t, j, a, r) {
+      h.hj = h.hj || function () {(h.hj.q = h.hj.q || []).push(arguments)};
+      h._hjSettings = {hjid: 4949492, hjsv: 6};
+      a = o.getElementsByTagName('head')[0];
+      r = o.createElement('script'); r.async = 1;
+      r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+      a.appendChild(r);
+    })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
   </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Dosis:wght@200;300&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
   <div class="centered">
-  <div class="inline">
-  <h3 id="winselement">Wins: 0</h3>
-  <h3 id="chipscount"><img src="assets/chip.png"> 0</h3>
-  </div>
-  <h1>Colourdle</h1>
-  <p>v0.2.0 - Updates every friday (latest update: 19th April 2024)</p>
-  <button id="start" class="easy">Easy Mode</button>
+    <div class="inline">
+      <h3 id="winselement">Wins: 0</h3>
+      <h3 id="chipscount"><img src="assets/chip.png"> 0</h3>
+      <h2><img id="skin-display" src="assets/skins/potrified.png">You</h3>
+      
+    </div>
+    
+    <h1>Colourdle</h1>
+    <p>v0.2.0 - Updates every friday (latest update: 19th April 2024)</p>
+    <button id="start" class="easy">Easy Mode</button>
     <br>
     <button id="start1" class="medium">Medium Mode</button>
     <br>
@@ -36,74 +42,75 @@
     <br>
     <button id="storebutton" class="storehelp">Store</button>
     <button id="helpbutton" class="storehelp">Help</button>
-  <button id="exitgame">Exit Game</button>
+    <button id="invbutton" class="storehelp">Inventory</button>
+    <button id="exitgame">Exit Game</button>
   </div>
   <div class="guessdisplay">
 
-  <table>
-    
-  <tr>
-    <td>1st Guess</td>
-    <td id="11e"> </td>
-    <td id="12e"> </td>
-    <td id="13e"> </td>
-    <td id="14e"> </td>
-  </tr>
-    
-  <tr>
-    <td>2nd Guess</td>
-    <td id="21e"> </td>
-    <td id="22e"> </td>
-    <td id="23e"> </td>
-    <td id="24e"> </td>
-  </tr>
-    
-    <tr>
-      <td>3rd Guess</td>
-      <td id="31e"> </td>
-      <td id="32e"> </td>
-      <td id="33e"> </td>
-      <td id="34e"> </td>
-    </tr>
-  
-    <tr>
-      <td>4th Guess</td>
-      <td id="41e"> </td>
-      <td id="42e"> </td>
-      <td id="43e"> </td>
-      <td id="44e"> </td>
-    </tr>
-    
-    <tr>
-      <td>Last Guess</td>
-      <td id="51e"> </td>
-      <td id="52e"> </td>
-      <td id="53e"> </td>
-      <td id="54e"> </td>
-    </tr>
-    
-  </table>
+    <table>
+
+      <tr>
+        <td>1st Guess</td>
+        <td id="11e"> </td>
+        <td id="12e"> </td>
+        <td id="13e"> </td>
+        <td id="14e"> </td>
+      </tr>
+
+      <tr>
+        <td>2nd Guess</td>
+        <td id="21e"> </td>
+        <td id="22e"> </td>
+        <td id="23e"> </td>
+        <td id="24e"> </td>
+      </tr>
+
+      <tr>
+        <td>3rd Guess</td>
+        <td id="31e"> </td>
+        <td id="32e"> </td>
+        <td id="33e"> </td>
+        <td id="34e"> </td>
+      </tr>
+
+      <tr>
+        <td>4th Guess</td>
+        <td id="41e"> </td>
+        <td id="42e"> </td>
+        <td id="43e"> </td>
+        <td id="44e"> </td>
+      </tr>
+
+      <tr>
+        <td>Last Guess</td>
+        <td id="51e"> </td>
+        <td id="52e"> </td>
+        <td id="53e"> </td>
+        <td id="54e"> </td>
+      </tr>
+
+    </table>
   </div>
   <div class="guessdisplaym">
     <table>
 
-    <tr>
-      <td>1st Guess</td>
-      <td id="11m"> </td>
-      <td id="12m"> </td>
-      <td id="13m"> </td>
-      <td id="14m"> </td>
-      <td id="15m"> </td>
-    </tr>
+      <tr>
+        <td>1st Guess</td>
+        <td id="11m"> </td>
+        <td id="12m"> </td>
+        <td id="13m"> </td>
+        <td id="14m"> </td>
+        <td id="15m"> </td>
+      </tr>
 
-    <tr>
-      <td>2nd Guess</td>
-      <td id="21m"> </td>
-      <td id="22m"> </td>
-      <td id="23m"> </td>
-      <td id="24m"> </td>
-      <td id="25m"> </td>
-    </tr>
+      <tr>
+        <td>2nd Guess</td>
+        <td id="21m"> </td>
+        <td id="22m"> </td>
+        <td id="23m"> </td>
+        <td id="24m"> </td>
+        <td id="25m"> </td>
+      </tr>
 
       <tr>
         <td>3rd Guess</td>
@@ -133,29 +140,29 @@
       </tr>
 
     </table>
-    </div>
+  </div>
   <div class="guessdisplayh">
     <table>
 
-    <tr>
-      <td>1st Guess</td>
-      <td id="11h"> </td>
-      <td id="12h"> </td>
-      <td id="13h"> </td>
-      <td id="14h"> </td>
-      <td id="15h"> </td>
-      <td id="16h"> </td>
-    </tr>
+      <tr>
+        <td>1st Guess</td>
+        <td id="11h"> </td>
+        <td id="12h"> </td>
+        <td id="13h"> </td>
+        <td id="14h"> </td>
+        <td id="15h"> </td>
+        <td id="16h"> </td>
+      </tr>
 
-    <tr>
-      <td>2nd Guess</td>
-      <td id="21h"> </td>
-      <td id="22h"> </td>
-      <td id="23h"> </td>
-      <td id="24h"> </td>
-      <td id="25h"> </td>
-      <td id="26h"> </td>
-    </tr>
+      <tr>
+        <td>2nd Guess</td>
+        <td id="21h"> </td>
+        <td id="22h"> </td>
+        <td id="23h"> </td>
+        <td id="24h"> </td>
+        <td id="25h"> </td>
+        <td id="26h"> </td>
+      </tr>
 
       <tr>
         <td>3rd Guess</td>
@@ -178,7 +185,7 @@
       </tr>
 
     </table>
-    </div>
+  </div>
   <div class="guessdisplayb">
     <button id="red">Red</button>
     <button id="green">Green</button>
@@ -209,27 +216,93 @@
     <div class="popup-content">
       <span class="close-btn" onclick="closePopup()">&times;</span>
       <h1>How to play colourdle</h1>
-      <h3>Colourdle is similar to games like wordle in the respect that you have to guess a sequence of colours. When you start playing, you can input your guess using the buttons at the bottom. when you guess, the colours will have a new border. Grey means that the colour is not in the colour sequence at all, anywhere, however amber means that colour is in the sequence, but not in that particular place. Green means it is in the sequence AND in the right place. For example:</h3>
+      <h3>Colourdle is similar to games like wordle in the respect that you have to guess a sequence of colours. When
+        you start playing, you can input your guess using the buttons at the bottom. when you guess, the colours will
+        have a new border. Grey means that the colour is not in the colour sequence at all, anywhere, however amber
+        means that colour is in the sequence, but not in that particular place. Green means it is in the sequence AND in
+        the right place. For example:</h3>
       <table>
-      <tr>
-        <td id="" style="background-color: red; border-color: gray;"> </td>
-        <td id="" style="background-color: blue; border-color: lime;"> </td>
-        <td id="" style="background-color: yellow; border-color: #ff6624;"> </td>
-        <td id="" style="background-color: purple; border-color: gray;"> </td>
-      </tr>
+        <tr>
+          <td id="" style="background-color: red; border-color: gray;"> </td>
+          <td id="" style="background-color: blue; border-color: lime;"> </td>
+          <td id="" style="background-color: yellow; border-color: #ff6624;"> </td>
+          <td id="" style="background-color: purple; border-color: gray;"> </td>
+        </tr>
       </table>
-      <h3>In this guess little timmy has made here, red and purple are not in the sequence at all, however yellow is in the sequence and in the wrong place. Blue is in the sequence, and it is in the right place. If you guess the correct sequence, you win! On easy mode and medium mode, you have 5 guesses. On hard mode, you have 4 guesses.</h3>
+      <h3>In this guess little timmy has made here, red and purple are not in the sequence at all, however yellow is in
+        the sequence and in the wrong place. Blue is in the sequence, and it is in the right place. If you guess the
+        correct sequence, you win! On easy mode and medium mode, you have 5 guesses. On hard mode, you have 4 guesses.
+      </h3>
       <h1>Chips and wins</h1>
-      <h3><img src="assets/chip.png">Chips are the currency of the game. You can earn <img src="assets/chip.png">chips by winning games. You can spend chips on items in the store (coming soon in next weeks update!). However, if you loose, you can actually loose <img src="assets/chip.png">chips. Lets look at how much you gain and loose for each mode:<br><br>
-  Easy mode win: <img src="assets/chip.png">5<br>
-  Easy mode loss: -<img src="assets/chip.png">1<br>
-  Medium mode win: <img src="assets/chip.png">10<br>
-  Medium mode loss: -<img src="assets/chip.png">2<br>
-  Hard mode win: <img src="assets/chip.png">20<br>
-  Hard mode loss: -<img src="assets/chip.png">5<br>
+      <h3><img src="assets/chip.png">Chips are the currency of the game. You can earn <img src="assets/chip.png">chips
+        by winning games. You can spend chips on items in the store (coming soon in next weeks update!). However, if you
+        loose, you can actually loose <img src="assets/chip.png">chips. Lets look at how much you gain and loose for
+        each mode:<br><br>
+        Easy mode win: <img src="assets/chip.png">5<br>
+        Easy mode loss: -<img src="assets/chip.png">1<br>
+        Medium mode win: <img src="assets/chip.png">10<br>
+        Medium mode loss: -<img src="assets/chip.png">2<br>
+        Hard mode win: <img src="assets/chip.png">20<br>
+        Hard mode loss: -<img src="assets/chip.png">5<br>
     </div>
   </div>
   
+  <div class="shopmenu" id="shopmenu" style="display: none;">
+    <div class="skinsmenu-header">
+      <h2>Store</h2>
+      <button class="closeskins" id="closeskins"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <button class="options">Skins</button>
+    <button class="options">Themes</button>
+    <div class="shop-container">
+      <button class="skin" id="skin10" onclick="checkbuy(1);">
+        <div class="img-wrapper">
+          <div class="shining-overlay-chroma"></div><img src="assets/skins/potrified.png">
+        </div>Potrified<br>
+        <p>420 chips</p><span class="skin-youtube">Youtube</span>
+      </button>
+      <button class="skin" id="skin10" onclick="checkbuy(2);">
+        <div class="img-wrapper">
+          <div class="shining-overlay-chroma"></div><img src="assets/skins/cyclone.jpg">
+        </div>CycloneStorm23<br>
+        <p>500 chips</p><span class="skin-youtube">Youtube</span>
+      </button>
+      </button>
+      <button class="skin" id="skin10" onclick="checkbuy(3);">
+        <div class="img-wrapper">
+          <div class="shining-overlay"></div><img src="assets/skins/king.png">
+        </div>King<br>
+        <p>200 chips<p><span class="skin-legendary">Legendary</span>
+      </button>
+    </div>
+  </div>
+  <div class="shopmenu" id="invmenu" style="display: none;">
+    <div class="skinsmenu-header">
+      <h2>Inventory</h2>
+      <button class="closeskins" id="closeinv"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="shop-container">
+      <button class="skin" id="d1" onclick="equip(1);">
+        <div class="img-wrapper">
+          <div class="shining-overlay-chroma"></div><img src="assets/skins/potrified.png">
+        </div>Potrified<br>
+        <p>Owned</p><span class="skin-youtube">Youtube</span>
+      </button>
+      <button class="skin" id="d2" onclick="equip(2);">
+        <div class="img-wrapper">
+          <div class="shining-overlay-chroma"></div><img src="assets/skins/cyclone.jpg">
+        </div>CycloneStorm23<br>
+        <p>Owned <p><span class="skin-youtube">Youtube</span>
+      </button>
+      <button class="skin" id="d3" onclick="equip(3);">
+        <div class="img-wrapper">
+          <div class="shining-overlay"></div><img src="assets/skins/king.png">
+        </div>The king<br>
+        <p>Owned <p><span class="skin-legendary">Legendary</span>
+      </button>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 

@@ -5,29 +5,41 @@ html, body {
   margin: 0;
   padding: 0;
   padding-bottom: env(safe-area-inset-bottom);
-  background: linear-gradient(to top right, #000000, #002b33);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color:  #000333;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 200;
+  animation: backg 20s linear infinite alternate;
   display: flexbox;
   justify-content: center;
   align-items: center;
   color: #fff;
 }
-
+@keyframes backg {
+  0%{
+    background:  #000119;
+  }
+  50% {
+    background: #0f0000;
+  }
+  100% {
+    background:  #000119;
+  }
+}
 h1 {
   color: #fff;
   font-size: 70px;
 }
 .easy {
-  background-color: lime;
+  background: linear-gradient(to right, #009900, #00ff00)
 }
 .medium {
-  background-color: #ffe224;
+  background: linear-gradient(to right, #998f00, #ffd500)
 }
 .hard {
-  background-color: #ff0000;
+  background: linear-gradient(to right, #990000, #ff0000)
 }
 .storehelp {
-  background-color: #005a8f;
+  background: linear-gradient(to right, #0006b8, #004cff)
 }
 .centered {
   align-items: center;
@@ -49,10 +61,10 @@ h1 {
   margin-left: auto;
   margin-right: auto;
 }
-h3 img {
+h1 img, h2 img, h3 img {
   vertical-align: middle;
   margin-right: 10px;    
-  width: 25px;           
+  width: 30px;           
   height: auto; 
 }
 h3 {
@@ -67,19 +79,20 @@ h3 {
   display: inline;
 }
 button {
-  background-color: #db8d1a;
+  background: linear-gradient(to right, #993600, orange);
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 20px;
+  font-family: "DM Sans", sans-serif;
   font-size: 20px;
   margin-bottom: 10px;
   margin-right: 10px;
 }
 #backspace {
-  background-color: #cc3333;
+  background: linear-gradient(to right, #990000, #ff0000);
 }
 #check {
-  background-color: lime;
+  background: linear-gradient(to right, #009900, #00ff00);
 }
 table {
   align-items: center;
@@ -89,7 +102,7 @@ table {
 
 td {
   border: 4px solid #fff;
-  border-radius: 5px;
+  border-radius: 10px;
   transition: 0.3s ease;
   margin: 10px;
   padding: 30px;
@@ -161,4 +174,183 @@ nav {
   top: 10px;
   right: 10px;
   cursor: pointer;
+  background: transparent;
+}
+.shop {
+  background: linear-gradient(to bottom right, #00001f, black);
+  border-radius: 10px;
+  width: 90%;
+  height: 60%;
+}
+.shopmenu {
+  display: none;
+  background: linear-gradient(to bottom right, #00001f, black);
+  color: white;
+  position: absolute;
+  z-index: 9999;
+  top: 15%;
+  overflow: scroll;
+  left: 50%;
+  transform: translate(-50%);
+  width: 50%;
+  height: 75%;
+  text-align: center;
+  border-radius: 10px;
+}
+.skinsmenu-header {
+  background: linear-gradient(to bottom right, #000066, #000d1f);
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  justify-content: space-between;
+  padding-left: 10px;
+}
+.options {
+  background: #ff0000;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 5px;
+  margin-top: 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.closeskins {
+  right: 10px;
+  top: 10px;
+  color: white;
+  background: transparent;
+}
+.skinsmenu-header .closeskins {
+  right: 10px;
+  top: 10px;
+  background: transparent;
+}
+.shop-container {
+  padding-left: 20px;
+  padding-right: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.skin {
+  background: transparent;
+  border: none;
+  color: white;
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+.skin p {
+  font-size: 18px;
+  margin-top: -3px;
+  margin-bottom: 0px;
+}
+.img-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  border-radius: 4px;
+}
+.skin img {
+  width: 100%;
+  height: 95%;
+  cursor: pointer;
+}
+.skin-common {
+  color: #757575;
+}
+.skin-uncommon {
+  color: #00ff62;
+}
+.skin-rare {
+  color: #0066ff;
+}
+.skin-epic {
+  color: #ff00d4;
+}
+.skin-legendary {
+  color: #ff9500;
+}
+.skin-mythic {
+  background: linear-gradient(to right, #ffee00, #ff6b08,#dbb700, #eedd44);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+.skin-youtube {
+  background: linear-gradient(to right, #ad003d, #ff6b08,#ad0000, #eedd44);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+.shining-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 95%;
+  background: linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 0.0),
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.0),
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.0),
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.0),
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.0)
+  );
+  border-radius: 4px;
+  background-size: 200% 200%;
+  animation: shining 2s linear infinite;
+  mix-blend-mode: overlay;
+  opacity: 0.8;
+}
+.shining-overlay-chroma {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 95%;
+  background: linear-gradient(
+    -45deg,
+    rgba(255, 162, 0, 0.0),
+    rgba(255, 162, 0, 0.2),
+    rgba(255, 162, 0, 1),
+    rgba(255, 162, 0, 0.2),
+    rgba(255, 162, 0, 0.0),
+    rgba(255, 162, 0, 0.2),
+    rgba(255, 162, 0, 1),
+    rgba(255, 162, 0, 0.2),
+    rgba(255, 162, 0, 0.0),
+    rgba(255, 162, 0, 0.2),
+    rgba(255, 162, 0, 1),
+    rgba(255, 162, 0, 0.2),
+    rgba(255, 162, 0, 0.0),
+    rgba(255, 162, 0, 0.2),
+    rgba(255, 162, 0, 1),
+    rgba(255, 162, 0, 0.2),
+    rgba(255, 162, 0, 0.0)
+  );
+  border-radius: 4px;
+  background-size: 200% 200%;
+  animation: shining 2s linear infinite;
+  mix-blend-mode: overlay;
+  opacity: 1;
+}
+
+@keyframes shining {
+  to {
+    background-position: 100% 100%;
+  }
 }

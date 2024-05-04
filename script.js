@@ -1,12 +1,16 @@
+// getting global elements needed for game
 const startButton = document.getElementById("start");
 const startButtonM = document.getElementById("start1");
 const startButtonH = document.getElementById("start2");
 const guessVisual = document.querySelector(".guessdisplay");
 const nextGame = document.getElementById("nextgame");
 const nextGame2 = document.getElementById("nextgame2");
+const shop = document.getElementById("shopmenu");
 const guessVisualm = document.querySelector(".guessdisplaym");
 const guessVisualh = document.querySelector(".guessdisplayh");
 const guessVisualb = document.querySelector(".guessdisplayb");
+const skindisplay = document.getElementById("skin-display");
+const skindisplaym = document.getElementById("invmenu")
 let redbutton = document.getElementById("red");
 let greenbutton = document.getElementById("green");
 let bluebutton = document.getElementById("blue");
@@ -16,6 +20,8 @@ let orangebutton = document.getElementById("orange");
 let backspacebutton = document.getElementById("backspace");
 const exitb = document.getElementById("exitgame");
 const submitbutton = document.getElementById("check");
+const invbutton = document.getElementById("invbutton");
+const closeinv = document.getElementById("closeinv");
 const winoverlay = document.getElementById("winoverlay");
 const lossoverlay = document.getElementById("lossoverlay");
 const winselement = document.getElementById("winselement");
@@ -27,11 +33,46 @@ let wins;
 let chips;
 let goes;
 let won;
+// setting skin ids and loading saves from local storage
+const skinIDS = {
+  0: "assets/skins/default.png",
+  1: "assets/skins/potrified.png",
+  2: "assets/skins/cyclone.jpg",
+  3: "assets/skins/king.png"
+}
 function removeAllEventListeners(element) {
     const clone = element.cloneNode(true);
     element.replaceWith(clone);
     return clone;
 }
+if (!localStorage.getItem("skins")) {
+  localStorage.setItem("skins", "");
+} else {
+  console.log("Skins Array found");
+}
+let skins = localStorage.getItem("skins").split(',');
+if (!localStorage.getItem("skinonrn")) {
+  localStorage.setItem("skinonrn", "0");
+} else {
+  console.log("Skins Current found");
+}
+let currentSkin = parseInt(localStorage.getItem("skinonrn"));
+skindisplay.src = skinIDS[currentSkin];
+document.getElementById('closeskins').addEventListener('click', function() {
+  if (shop.style.display == "none") {
+    shop.style.display = "block";
+  } else {
+    shop.style.display = "none";
+  }
+});
+closeinv.addEventListener("click", function() {
+  if (invmenu.style.display == "none") {
+    invmenu.style.display = "block";
+
+  } else {
+    invmenu.style.display = "none";
+  }
+})
 function formatint(number) {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
@@ -47,6 +88,7 @@ if (localStorage.getItem("chips") != null) {
 }
 winselement.innerHTML = "Wins: " + wins;
 chipscount.innerHTML = "<img src='assets/chip.png'>" + chips;
+// setting essential game vars
 let a;
 let m;
 let greentimes = 0;
@@ -64,9 +106,26 @@ const colourDefs = new Map([
 ]);
 let colours = [];
 let guess = [];
+// button event listeners for help, shop and inv popups
 helpbutton.addEventListener("click", function() {
   helpoverlay.style.display = "block";
 });
+storebutton.addEventListener("click", function() {
+  shop.style.display = "inline-block";
+})
+invbutton.addEventListener("click", function() {
+  invmenu.style.display = "block";
+  for (let i = 1; i < 4; i++) {
+    if (skins.includes(i.toString())) {
+      document.getElementById("d" + i.toString()).style.display = "block";
+      alert(skins[i] + " is in your inventory")
+    } else {
+      document.getElementById("d" + i.toString()).style.display = "none";
+    }
+  }
+})
+// hiding all unnescesary elements
+shop.style.display = "none";
 guessVisual.style.display = "none";
 guessVisualm.style.display = "none";
 guessVisualb.style.display = "none";
@@ -75,6 +134,8 @@ exitb.style.display = "none";
 winoverlay.style.display = "none";
 lossoverlay.style.display = "none";
 helpoverlay.style.display = "none";
+invmenu.style.display = "none";
+// function to leave game
 exitb.addEventListener("click", function () {
   guessVisual.style.display = "none";
   guessVisualm.style.display = "none";
@@ -89,7 +150,7 @@ exitb.addEventListener("click", function () {
   startButtonM.style.display = "inline-block";
   startButtonH.style.display = "inline-block";
 })
-// eventListener functions
+// eventListener functions for colour buttons in form e,m,h 
 function redButtonClickHandler() {
   if (guessindex < 5) {
     document.getElementById(`${guessnumber}${guessindex}e`).style.backgroundColor = "#cc3333";
@@ -244,7 +305,7 @@ function backspaceButtonClickHandlerh() {
   document.getElementById(`${guessnumber}${guessindex}h`).style.backgroundColor = "transparent";
 }
 
-
+// functions for new games
 function resetTable(index, mode) {
   if (mode == "h") {
     goes = 4;
@@ -282,7 +343,7 @@ function closePopup() {
   document.getElementById("lossoverlay").style.display = "none";
   helpoverlay.style.display = "none";
 }
-
+// main game code
 function startGameEz(mod, num1) {
   won = 0;
   closePopup();
@@ -450,3 +511,60 @@ startButtonH.addEventListener("click", function() {
   startGameEz("h", 6);
 
 })
+function checkbuy(num) {
+  switch(num){
+    case 1:
+      if (!skins.includes("1")){
+        if (chips >= 420) {
+          chips -= 420;
+          localStorage.setItem("chips", chips);
+          chipscount.innerHTML = "<img src='assets/chip.png'>" + chips;
+          skindisplay.src = "./assets/skins/potrified.png";
+          localStorage.setItem("skinonrn", "1");
+          skins.push("1");
+          localStorage.setItem("skins", skins);
+          
+        }
+      }
+      break;
+    case 2:
+      if (!skins.includes("2")){
+        if (chips >= 500) {
+          chips -= 500;
+          localStorage.setItem("chips", chips);
+          chipscount.innerHTML = "<img src='assets/chip.png'>" + chips;
+          skindisplay.src = "./assets/skins/cyclone.jpg";
+          localStorage.setItem("skinonrn", "2");
+          skins.push("2");
+          localStorage.setItem("skins", skins);
+        }
+      }
+      break;
+    case 3:
+      if (!skins.includes("3")){
+        if (chips >= 200) {
+          chips -= 200;
+          localStorage.setItem("chips", chips);
+          chipscount.innerHTML = "<img src='assets/chip.png'>" + chips;
+          skindisplay.src = "./assets/skins/king.png";
+          localStorage.setItem("skinonrn", "3");
+          skins.push("3");
+          localStorage.setItem("skins", skins);
+        }
+      }
+      break;
+  }
+}
+function equip(num) {
+  switch(num) {
+    case 1:
+      skindisplay.src = "./assets/skins/potrified.png";
+      break;
+    case 2:
+      skindisplay.src = "./assets/skins/cyclone.jpg";
+      break;
+    case 3:
+      skindisplay.src = "./assets/skins/king.png";
+      break;
+  }
+}
