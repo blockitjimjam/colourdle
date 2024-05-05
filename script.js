@@ -33,6 +33,7 @@ let wins;
 let chips;
 let goes;
 let won;
+
 // setting skin ids and loading saves from local storage
 const skinIDS = {
   0: "assets/skins/default.png",
@@ -118,7 +119,6 @@ invbutton.addEventListener("click", function() {
   for (let i = 1; i < 4; i++) {
     if (skins.includes(i.toString())) {
       document.getElementById("d" + i.toString()).style.display = "block";
-      alert(skins[i] + " is in your inventory")
     } else {
       document.getElementById("d" + i.toString()).style.display = "none";
     }
@@ -338,6 +338,7 @@ nextGame2.addEventListener("click", function () {
     startGameEz("h", 6);
   }
 })
+// function for closing popups for losses and wins
 function closePopup() {
   document.getElementById("winoverlay").style.display = "none";
   document.getElementById("lossoverlay").style.display = "none";
@@ -347,6 +348,8 @@ function closePopup() {
 function startGameEz(mod, num1) {
   won = 0;
   closePopup();
+  colourAnswer  = [];
+  // creating random colours
   for (let i = 0; i < num1; i++) {
     a = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
     colourAnswer[i] = a;
