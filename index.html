@@ -7,6 +7,7 @@
   <title>Colourdle</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
   <script src="https://kit.fontawesome.com/29bb004d97.js" crossorigin="anonymous"></script>
+  
   <script>
     (function (h, o, t, j, a, r) {
       h.hj = h.hj || function () {(h.hj.q = h.hj.q || []).push(arguments)};
@@ -35,16 +36,19 @@
     </div>
 
     <h1>Colourdle</h1>
-    <p>v0.3.3 - Updates every friday (latest update: 5th May 2024) (bug fixes)</p>
-    <button id="start" class="easy">Easy Mode</button>
+    <p>v0.4.0 - Updates every few weeks (latest update: 25th May 2024) (Impossible mode!)</p>
+    <button id="start" class="easy">Easy</button>
     <br>
-    <button id="start1" class="medium">Medium Mode</button>
+    <button id="start1" class="medium">Medium</button>
     <br>
-    <button id="start2" class="hard">Hard Mode</button>
+    <button id="start2" class="hard">Hard</button>
     <br>
-    <button id="storebutton" class="storehelp">Store</button>
-    <button id="helpbutton" class="storehelp">Help</button>
-    <button id="invbutton" class="storehelp">Inventory</button>
+    <button id="start3" class="impossible">Impossible</button>
+    <br>
+    <button id="storebutton" class="storehelp"><i class="fa-solid fa-store"></i></button>
+    <button id="helpbutton" class="storehelp"><i class="fa-solid fa-question"></i></button>
+    <button id="invbutton" class="storehelp"><i class="fa-solid fa-box-archive"></i></button>
+    <button id="questsbutton" class="questsbutton"><i class="fa-solid fa-bullseye"></i></button>
     <button id="exitgame">Exit Game</button>
   </div>
   <div class="guessdisplay">
@@ -188,6 +192,23 @@
 
     </table>
   </div>
+  <div class="guessdisplayi">
+    <table>
+
+      <tr>
+        <td>Only Guess</td>
+        <td id="11i"> </td>
+        <td id="12i"> </td>
+        <td id="13i"> </td>
+        <td id="14i"> </td>
+        <td id="15i"> </td>
+        <td id="16i"> </td>
+      </tr>
+
+
+
+    </table>
+  </div>
   <div class="guessdisplayb">
     <button id="red">Red</button>
     <button id="green">Green</button>
@@ -237,7 +258,7 @@
       </h3>
       <h1>Chips and wins</h1>
       <h3><img src="assets/chip.png">Chips are the currency of the game. You can earn <img src="assets/chip.png">chips
-        by winning games. You can spend chips on items in the store (coming soon in next weeks update!). However, if you
+        by winning games. You can spend chips on items in the store. However, if you
         loose, you can actually loose <img src="assets/chip.png">chips. Lets look at how much you gain and loose for
         each mode:<br><br>
         Easy mode win: <img src="assets/chip.png">5<br>
@@ -246,6 +267,8 @@
         Medium mode loss: -<img src="assets/chip.png">2<br>
         Hard mode win: <img src="assets/chip.png">20<br>
         Hard mode loss: -<img src="assets/chip.png">5<br>
+        Impossible mode win: <img src="assets/chip.png">1,000,000 + <img src="assets/skins/Against the odds.png"> Chroma skin<br>
+        Impossible mode loss: -<img src="assets/chip.png">1<br>
     </div>
   </div>
 
@@ -277,6 +300,13 @@
         <p>200 chips
         <p><span class="skin-legendary">Legendary</span>
       </button>
+      <button class="skin" id="skin10" onclick="checkbuy(4);">
+        <div class="img-wrapper">
+          <div class="shining-overlay"></div><img src="assets/skins/Against the odds.png">
+        </div>Against all odds<br>
+        <p>Win impossible mode</p>
+        <p><span class="skin-mythic">Chroma</span></p>
+      </button>
     </div>
   </div>
   <div class="shopmenu" id="invmenu" style="display: none;">
@@ -305,6 +335,20 @@
         <p>Owned
         <p><span class="skin-legendary">Legendary</span>
       </button>
+      <button class="skin" id="d4" onclick="equip(4);">
+        <div class="img-wrapper">
+          <div class="shining-overlay"></div><img src="assets/skins/Against the odds.png">
+        </div>Against all odds<br>
+        <p>Owned
+        <p><span class="skin-mythic">Chroma</span>
+      </button>
+    </div>
+  </div>
+  <div class="popupover" id="questsoverlay">
+    <div class="popup-content">
+      <span class="close-btn" onclick="closePopup()">&times;</span>
+      <h2>Coming soon to colourdle: Quests <i class="fa-solid fa-bullseye"></i></h2>
+      <p>Quests are a fun way to earn chips and skins! They are in development and will be arriving in colourlde soon!</p>
     </div>
   </div>
 

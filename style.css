@@ -30,17 +30,30 @@ h1 {
   font-size: 70px;
 }
 .easy {
-  background: linear-gradient(to right, #009900, #00ff00)
+  background: linear-gradient(to right, #009900, #00ff00);
+  transition: 0.5s;
 }
 .medium {
-  background: linear-gradient(to right, #998f00, #ffd500)
+  background: linear-gradient(to right, #998f00, #ffd500);
+  transition: 0.5s;
 }
 .hard {
-  background: linear-gradient(to right, #990000, #ff0000)
+  background: linear-gradient(to right, #990000, #ff0000);
+  transition: 0.5s;
+}
+.impossible {
+  color: white;
+  background: linear-gradient(to right, #240000, #500066);
+  transition: 0.5s;
 }
 .storehelp {
-  background: linear-gradient(to right, #0006b8, #004cff)
+  background: linear-gradient(to right, #0006b8, #004cff);
+  transition: 0.5s;
 }
+.questsbutton {
+  background: linear-gradient(to right, #420066, #5900ff);
+}
+
 .centered {
   align-items: center;
   text-align: center;
@@ -54,6 +67,10 @@ h1 {
   margin-right: auto;
 }
 .guessdisplayh {
+  margin-left: auto;
+  margin-right: auto;
+}
+.guessdisplayi {
   margin-left: auto;
   margin-right: auto;
 }

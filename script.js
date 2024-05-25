@@ -2,15 +2,18 @@
 const startButton = document.getElementById("start");
 const startButtonM = document.getElementById("start1");
 const startButtonH = document.getElementById("start2");
+const startButtoni = document.getElementById("start3");
 const guessVisual = document.querySelector(".guessdisplay");
 const nextGame = document.getElementById("nextgame");
 const nextGame2 = document.getElementById("nextgame2");
 const shop = document.getElementById("shopmenu");
+const questbutton = document.getElementById("questsbutton");
 const guessVisualm = document.querySelector(".guessdisplaym");
 const guessVisualh = document.querySelector(".guessdisplayh");
 const guessVisualb = document.querySelector(".guessdisplayb");
+const guessVisuali = document.querySelector(".guessdisplayi");
 const skindisplay = document.getElementById("skin-display");
-const skindisplaym = document.getElementById("invmenu")
+const skindisplaym = document.getElementById("invmenu");
 let redbutton = document.getElementById("red");
 let greenbutton = document.getElementById("green");
 let bluebutton = document.getElementById("blue");
@@ -29,22 +32,25 @@ const helpbutton = document.getElementById("helpbutton");
 const storebutton = document.getElementById("storebutton");
 const chipscount = document.getElementById("chipscount");
 const helpoverlay = document.getElementById("helpoverlay");
+const questsoverlay = document.getElementById("questsoverlay");
 let wins;
 let chips;
 let goes;
 let won;
+let iwins;
 
 // setting skin ids and loading saves from local storage
 const skinIDS = {
   0: "assets/skins/default.png",
   1: "assets/skins/potrified.png",
   2: "assets/skins/cyclone.jpg",
-  3: "assets/skins/king.png"
+  3: "assets/skins/king.png",
+  4: "assets/skins/Against the odds.png"
 }
 function removeAllEventListeners(element) {
-    const clone = element.cloneNode(true);
-    element.replaceWith(clone);
-    return clone;
+  const clone = element.cloneNode(true);
+  element.replaceWith(clone);
+  return clone;
 }
 if (!localStorage.getItem("skins")) {
   localStorage.setItem("skins", "");
@@ -52,6 +58,11 @@ if (!localStorage.getItem("skins")) {
   console.log("Skins Array found");
 }
 let skins = localStorage.getItem("skins").split(',');
+if (!localStorage.getItem("iwins")) {
+  iwins = 0;
+} else {
+  iwins = parseInt(localStorage.getItem("iwins"));
+}
 if (!localStorage.getItem("skinonrn")) {
   localStorage.setItem("skinonrn", "0");
 } else {
@@ -75,7 +86,7 @@ closeinv.addEventListener("click", function() {
   }
 })
 function formatint(number) {
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 if (localStorage.getItem("wins") != null) {
   wins = parseInt(localStorage.getItem("wins"));
@@ -130,17 +141,19 @@ guessVisual.style.display = "none";
 guessVisualm.style.display = "none";
 guessVisualb.style.display = "none";
 guessVisualh.style.display = "none";
+guessVisuali.style.display = "none";
 exitb.style.display = "none";
 winoverlay.style.display = "none";
 lossoverlay.style.display = "none";
 helpoverlay.style.display = "none";
 invmenu.style.display = "none";
 // function to leave game
-exitb.addEventListener("click", function () {
+exitb.addEventListener("click", function() {
   guessVisual.style.display = "none";
   guessVisualm.style.display = "none";
   guessVisualb.style.display = "none";
   guessVisualh.style.display = "none";
+  guessVisuali.style.display = "none";
   exitb.style.display = "none";
   winoverlay.style.display = "none";
   lossoverlay.style.display = "none";
@@ -149,8 +162,12 @@ exitb.addEventListener("click", function () {
   startButton.style.display = "inline-block";
   startButtonM.style.display = "inline-block";
   startButtonH.style.display = "inline-block";
+  startButtoni.style.display = "inline-block";
 })
-// eventListener functions for colour buttons in form e,m,h 
+questbutton.addEventListener("click", function() {
+  questsoverlay.style.display = "inline-block";
+})
+// eventListener functions for colour buttons in form e,m,h,i
 function redButtonClickHandler() {
   if (guessindex < 5) {
     document.getElementById(`${guessnumber}${guessindex}e`).style.backgroundColor = "#cc3333";
@@ -302,13 +319,66 @@ function backspaceButtonClickHandlerh() {
     guessindex = 1;
   }
 
-  document.getElementById(`${guessnumber}${guessindex}h`).style.backgroundColor = "transparent";
+  document.getElementById(`${guessnumber}${guessindex}i`).style.backgroundColor = "transparent";
+}
+function redButtonClickHandleri() {
+  if (guessindex < 7) {
+    document.getElementById(`${guessnumber}${guessindex}i`).style.backgroundColor = "#cc3333";
+    guessindex++;
+  }
+}
+
+function greenButtonClickHandleri() {
+  if (guessindex < 7) {
+    document.getElementById(`${guessnumber}${guessindex}i`).style.backgroundColor = "green";
+    guessindex++;
+  }
+}
+
+function blueButtonClickHandleri() {
+  if (guessindex < 7) {
+    document.getElementById(`${guessnumber}${guessindex}i`).style.backgroundColor = "blue";
+    guessindex++;
+  }
+}
+
+function yellowButtonClickHandleri() {
+  if (guessindex < 7) {
+    document.getElementById(`${guessnumber}${guessindex}i`).style.backgroundColor = "yellow";
+    guessindex++;
+  }
+}
+
+function purpleButtonClickHandleri() {
+  if (guessindex < 7) {
+    document.getElementById(`${guessnumber}${guessindex}i`).style.backgroundColor = "purple";
+    guessindex++;
+  }
+}
+
+function orangeButtonClickHandleri() {
+  if (guessindex < 7) {
+    document.getElementById(`${guessnumber}${guessindex}i`).style.backgroundColor = "orange";
+    guessindex++;
+  }
+}
+
+function backspaceButtonClickHandleri() {
+  if (guessindex > 1) {
+    guessindex--;
+  } else {
+    guessindex = 1;
+  }
+
+  document.getElementById(`${guessnumber}${guessindex}i`).style.backgroundColor = "transparent";
 }
 
 // functions for new games
 function resetTable(index, mode) {
   if (mode == "h") {
     goes = 4;
+  } else if (mode == "i") {
+    goes = 1;
   } else {
     goes = 5;
   }
@@ -320,22 +390,26 @@ function resetTable(index, mode) {
     }
   }
 }
-nextGame.addEventListener("click", function () {
-  if (m == "E"){
+nextGame.addEventListener("click", function() {
+  if (m == "E") {
     startGameEz("e", 4);
   } else if (m == "M") {
     startGameEz("m", 5);
-  } else {
+  } else if (m == "H") {
     startGameEz("h", 6);
+  } else {
+    startGameEz("i", 6);
   }
 })
-nextGame2.addEventListener("click", function () {
-  if (m == "E"){
+nextGame2.addEventListener("click", function() {
+  if (m == "E") {
     startGameEz("e", 4);
   } else if (m == "M") {
     startGameEz("m", 5);
-  } else {
+  } else if (m == "H") {
     startGameEz("h", 6);
+  } else {
+    startGameEz("i", 6);
   }
 })
 // function for closing popups for losses and wins
@@ -343,15 +417,16 @@ function closePopup() {
   document.getElementById("winoverlay").style.display = "none";
   document.getElementById("lossoverlay").style.display = "none";
   helpoverlay.style.display = "none";
+  questsoverlay.style.display = "none";
 }
 // main game code
 function startGameEz(mod, num1) {
   won = 0;
   closePopup();
-  colourAnswer  = [];
+  colourAnswer = [];
   // creating random colours
   for (let i = 0; i < num1; i++) {
-    a = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
+    a = Math.floor(Math.random() * (num1 - 1 + 1)) + 1;
     colourAnswer[i] = a;
 
   }
@@ -366,20 +441,31 @@ function startGameEz(mod, num1) {
   startButton.style.display = "none";
   startButtonM.style.display = "none";
   startButtonH.style.display = "none";
-  if (mod == "e"){
+  startButtoni.style.display = "none";
+  if (mod == "e") {
     guessVisual.style.display = "table";
   } else if (mod == "m") {
     guessVisualm.style.display = "table";
-  } else {
+  } else if (mod == "h") {
     guessVisualh.style.display = "table";
+  } else {
+    guessVisuali.style.display = "table";
   }
   guessVisualb.style.display = "table";
   resetTable(num1, mod);
-  
+
 
   submitbutton.addEventListener("click", function() {
     greentimes = 0;
     ambertimes = 0;
+    amountoftimes = {
+      1: 0,
+      2: 0,
+      3: 0,
+      4: 0,
+      5: 0,
+      6: 0,
+    }
     if (guessindex == num1 + 1) {
       let guessc;
       for (let i = 1; i < num1 + 1; i++) {
@@ -406,15 +492,20 @@ function startGameEz(mod, num1) {
         } else if (mod == "m") {
           wins++;
           chips += 10;
-         } else if (mod == "h") {
+        } else if (mod == "h") {
           wins += 2;
           chips += 20;
+        } else if (mod == "i") {
+          wins += 2;
+          chips += 1000000;
+          iwins++;
         } else {
           chips -= 1;
         }
         won = 1;
         localStorage.setItem("wins", wins);
         localStorage.setItem("chips", chips);
+        localStorage.setItem("iwins", iwins);
         chipscount.innerHTML = "<img src='assets/chip.png'>" + chips;
         winselement.innerHTML = "Wins: " + wins;
         winoverlay.style.display = "block";
@@ -436,6 +527,8 @@ function startGameEz(mod, num1) {
             chips -= 2;
           } else if (mod == "h") {
             chips -= 5;
+          } else if (mod == "i") {
+            chips -= 1;
           }
           lossoverlay.style.display = "block";
           chipscount.innerHTML = "<img src='assets/chip.png'>" + chips;
@@ -456,7 +549,7 @@ startButton.addEventListener("click", function() {
   purplebutton = removeAllEventListeners(purplebutton);
   orangebutton = removeAllEventListeners(orangebutton);
   backspacebutton = removeAllEventListeners(backspacebutton);
-  
+
 
   m = "E"
   nextGame.onclick = m;
@@ -468,7 +561,7 @@ startButton.addEventListener("click", function() {
   orangebutton.addEventListener("click", orangeButtonClickHandler);
   backspacebutton.addEventListener("click", backspaceButtonClickHandler);
   startGameEz("e", 4);
-  
+
 })
 
 startButtonM.addEventListener("click", function() {
@@ -514,10 +607,31 @@ startButtonH.addEventListener("click", function() {
   startGameEz("h", 6);
 
 })
+startButtoni.addEventListener("click", function() {
+  redbutton = removeAllEventListeners(redbutton);
+  greenbutton = removeAllEventListeners(greenbutton);
+  bluebutton = removeAllEventListeners(bluebutton);
+  yellowbutton = removeAllEventListeners(yellowbutton);
+  purplebutton = removeAllEventListeners(purplebutton);
+  orangebutton = removeAllEventListeners(orangebutton);
+  backspacebutton = removeAllEventListeners(backspacebutton);
+
+  m = "I";
+  nextGame.onclick = m;
+  redbutton.addEventListener("click", redButtonClickHandleri);
+  greenbutton.addEventListener("click", greenButtonClickHandleri);
+  bluebutton.addEventListener("click", blueButtonClickHandleri);
+  yellowbutton.addEventListener("click", yellowButtonClickHandleri);
+  purplebutton.addEventListener("click", purpleButtonClickHandleri);
+  orangebutton.addEventListener("click", orangeButtonClickHandleri);
+  backspacebutton.addEventListener("click", backspaceButtonClickHandleri);
+  startGameEz("i", 6);
+
+})
 function checkbuy(num) {
-  switch(num){
+  switch (num) {
     case 1:
-      if (!skins.includes("1")){
+      if (!skins.includes("1")) {
         if (chips >= 420) {
           chips -= 420;
           localStorage.setItem("chips", chips);
@@ -526,12 +640,12 @@ function checkbuy(num) {
           localStorage.setItem("skinonrn", "1");
           skins.push("1");
           localStorage.setItem("skins", skins);
-          
+
         }
       }
       break;
     case 2:
-      if (!skins.includes("2")){
+      if (!skins.includes("2")) {
         if (chips >= 500) {
           chips -= 500;
           localStorage.setItem("chips", chips);
@@ -544,7 +658,7 @@ function checkbuy(num) {
       }
       break;
     case 3:
-      if (!skins.includes("3")){
+      if (!skins.includes("3")) {
         if (chips >= 200) {
           chips -= 200;
           localStorage.setItem("chips", chips);
@@ -556,10 +670,19 @@ function checkbuy(num) {
         }
       }
       break;
+    case 4:
+      if (!skins.includes("4")) {
+        if (iwins >= 1) {
+          skindisplay.src = "./assets/skins/Against the odds.png";
+          localStorage.setItem("skinonrn", "4");
+          skins.push("4");
+          localStorage.setItem("skins", skins);
+        }
+      }
   }
 }
 function equip(num) {
-  switch(num) {
+  switch (num) {
     case 1:
       skindisplay.src = "./assets/skins/potrified.png";
       break;
@@ -568,6 +691,9 @@ function equip(num) {
       break;
     case 3:
       skindisplay.src = "./assets/skins/king.png";
+      break;
+    case 4:
+      skindisplay.src = "./assets/skins/Against the odds.png";
       break;
   }
 }
