@@ -60,6 +60,7 @@ if (!localStorage.getItem("skins")) {
 let skins = localStorage.getItem("skins").split(',');
 if (!localStorage.getItem("iwins")) {
   iwins = 0;
+  localStorage.setItem("iwins", iwins);
 } else {
   iwins = parseInt(localStorage.getItem("iwins"));
 }
@@ -127,7 +128,7 @@ storebutton.addEventListener("click", function() {
 })
 invbutton.addEventListener("click", function() {
   invmenu.style.display = "block";
-  for (let i = 1; i < 4; i++) {
+  for (let i = 1; i < 5; i++) {
     if (skins.includes(i.toString())) {
       document.getElementById("d" + i.toString()).style.display = "block";
     } else {
